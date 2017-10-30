@@ -1,0 +1,19 @@
+@model TheWall.Models.LogModel
+
+<h2>Login</h2>
+<form asp-controller="LogReg" asp-action="Login" method="POST">  
+    <span asp-validation-for="email"></span>
+    <label asp-for="email">Email:</label>
+    <input asp-for="email" class="form-control"/>  
+    <span asp-validation-for="password"></span>
+    <label asp-for="password">Password:</label>
+    <input asp-for="password" class="form-control"/>
+    <input type="submit" value="Login" class="btn-primary">
+</form>
+
+@{
+    if (@ViewBag.loginError != null)
+    {
+        <p>@ViewBag.loginError</p>
+    }
+}

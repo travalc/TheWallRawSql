@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="~/css/main.css">
+    <title>The Wall</title>
+</head>
+<body>
+    <h1>THE WALL</h1>
+    @using TheWall.Models
+    @Html.Partial("Message", (MessageModel)@ViewBag.message)
+    <hr>
+    @{
+        foreach (var message in @ViewBag.messages)
+        {
+            CommentModel newComment = ViewBag.comment;
+            newComment.Messages_id = message["id"];
+            <div>
+                <h4>@message["user"] - @message["date"]</h4>
+                <p>@message["message"]</p>
+                <div class="comments">
+                    @{
+                        foreach (var comment in message["comments"])
+                        {
+                            <h5>@comment["user"] - @comment["date"]</h5>
+                            <p>@comment["comment"]</p>
+                        }
+                    }
+                    @Html.Partial("Comment", newComment)
+                </div>
+            </div>
+        }
+    }
+        <form action="Logout" method="POST">
+            <input type="submit" value="Logout" class="btn-danger">
+        </form>
+</body>
+</html>

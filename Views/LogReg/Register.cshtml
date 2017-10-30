@@ -1,0 +1,22 @@
+@model TheWall.Models.RegModel
+
+<h2>Registration</h2>
+
+<form asp-controller="LogReg" asp-action="Register" method="POST">
+    <span asp-validation-for="firstName"></span>
+    <label asp-for="firstName">First Name:</label>
+    <input asp-for="firstName" class="form-control"/>
+    <span asp-validation-for="lastName"></span>
+    <label asp-for="lastName">Last Name:</label>
+    <input asp-for="lastName" class="form-control"/>
+    <span asp-validation-for="email"></span>
+    <label asp-for="email">Email:</label>
+    <input asp-for="email" class="form-control"/>
+    <span asp-validation-for="password"></span>
+    <label asp-for="password">Password:</label>
+    <input asp-for="password" class="form-control"/>
+    <span asp-validation-for="passwordConfirmation"></span>
+    <label asp-for="passwordConfirmation">Confirm Password:</label>
+    <input asp-for="passwordConfirmation" class="form-control"/>
+    <input type="submit" value="Register" class="btn-primary">
+</form>
